@@ -1,163 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonanza Satrangi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-<link rel="stylesheet" href="css/bootstrap.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Trade My Talent</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #f6d365 0%, #fd6e6a 100%);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    .glass-navbar {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(111,66,193,0.08);
+    }
+    .text-gradient {
+      background: linear-gradient(90deg, #6f42c1, #fd6e6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .theme-toggle-btn img.theme-toggle-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+}
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+      outline: none;
+    }
+    .theme-toggle-btn:active i,
+    .theme-toggle-btn:focus i {
+      outline: none;
+      box-shadow: none;
+    }
+    .rotate {
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    .btn-custom {
+      background: #6f42c1;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      border: none;
+    }
+    .btn-custom:hover {
+      background: #fd6e6a;
+      color: #fff;
+    }
+    .section.glass-card {
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(111,66,193,0.08);
+      backdrop-filter: blur(8px);
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.18);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(111,66,193,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(111,66,193,0.18);
+    }
+    .dark-mode {
+      background: #181828 !important;
+      color: #f0f0f0 !important;
+    }
+    .dark-mode .glass-navbar,
+    .dark-mode .section.glass-card,
+    .dark-mode .feature-card {
+      background: rgba(30,30,30,0.85) !important;
+      color: #f0f0f0 !important;
+    }
+    @media (max-width: 991px) {
+      .glass-navbar {
+        border-radius: 0;
+      }
+      .section.glass-card {
+        border-radius: 0;
+        margin-bottom: 24px;
+        padding: 24px 8px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- banner -->
-    <div class="container-fluid" style="background-color:#fcdcdc ;">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4"><i class="fa-solid fa-paper-plane" style="font-size: 13px;"></i>    Flat Rs. 100 shipping charges on all orders</div>
-            <div class="col-2">             </div>
-            <div class="col-4">No Return or Exchange on Sale Items</div>
-            <div class="col-1"></div>
-        </div>
+<!-- Modern Glass Navbar -->
+<nav class="navbar navbar-expand-lg glass-navbar sticky-top shadow-sm px-4 py-2">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-gradient" href="#">Trade My Talent</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-outline-primary ms-3" href="signup_login.html">Login</a></li>
+        <li class="nav-item"><a class="btn btn-custom ms-2" href="signup_login.html">Sign Up</a></li>
+          <button onclick="toggleTheme()" class="theme-toggle-btn ms-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="theme-toggle-icon" id="themeIcon" alt="Toggle Theme" />
+          </button>
+        </li>
+      </ul>
+      
     </div>
-    <!-- banner end -->
-    <!-- navbar -->
-    
-    <div class="container">
-      <div class="row">
-      <div class="col-4"></div>
-        <div class="col-1 "><a href="home.html"><img src="./img/Bonanza_Logo_500x@2x.webp"  class="rounded mx-auto d-block"  width="300px"  alt=""></a></div>
-        <div class="col-4"></div> 
-        <div class="col-1"></div> 
-        <div class="col-2 mt-3 p-2">
-          <a href="track.html"><i class="fa-solid fa-truck p-1"></i></a>
-          <a href=""><i class="fa-solid fa-magnifying-glass p-1"></a></i>
-          <a href=""><i class="fa-regular fa-heart p-1"></a></i>
-          <a href=""><i class="fa-solid fa-bag-shopping p-1"></a></i>
-          <a href=""><i class="fa-solid fa-user p-1"></a></i>
-          </div>   
-        
-    </div> 
   </div>
-  
-    <!-- navbar -->
-    <div class="nav-bar">
-        <div class="container-fluid border-bottom border-dark">
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-10">
-              <a class="navbar-brand text-success" href="">NEW ARRVIALS</a>
-              <a class="navbar-brand " href="#">WINTER COLLECTION</a>
-              <a class="navbar-brand" href="#">READY TO WEAR</a>
-              <a class="navbar-brand" href="#">UNSTITCHED</a>
-              <a class="navbar-brand" href="#">COSMETICS</a>
-              <a class="navbar-brand" href="#">MEN</a>
-              <a class="navbar-brand" href="#">FRAGRANCES</a>
-              <a class="navbar-brand text-danger" href="#">SALE</a>
-            </div>
-        <div class=""></div>
-        
-        </div>
-        </div>
+</nav>
+     
+
+<!-- About Section -->
+<section class="section glass-card text-center py-5" data-aos="fade-up">
+  <div class="container">
+    <h1 class="mb-4"><i class="fas fa-users text-primary me-2"></i>Who We Are</h1>
+    <p class="lead mb-4">Trade My Talent is a community-driven platform for students to swap skills, help each other grow, and build meaningful learning experiences — all without money.</p> <br>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img src="img/img4.svg" class="img-fluid rounded shadow-sm mb-4" alt="Our Mission">
+      </div>
     </div>
-    <!-- navbar end -->
-    <br><br>
-    <!-- btn -->
-    <p style="display: inline; padding-left: 5%;">
-      <a href="home.html" class="text-dark text-decoration-none">Home</a>
-      <b>|</b>    
-      <a href="home.html" class="text-dark text-decoration-none">About Us</a></p>
-       <!-- btn end -->
-    <h4 style="text-align: center;">About Us</h4>
     <br>
-    <h2 style="text-align: center;">Excellence. Innovation. Value. Style.</h2>
-    <br>
-   <div class="container">
-    <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">With over 40 years of experience, Bonanza continues its legacy of providing superior fabric, value for money and trendsetting apparel to its consumers. It all began in 1976 when the textile industry had not even flourished to its complete potential, that Bonanza initiated ready-made winter wear, particularly knits for men, women and children. From then on, Bonanza became a prestigious brand and won respect as the master of detail in the realm of ready-made garments manufacturing.
-        <br><br>
-                With over 80+ outlets across Pakistan, Bonanza stands as an enormous textile giant today. However, looking at the market potential amongst clothing brands for women, Bonanza furthermore ventured into creating its exclusive women’s clothing line Satrangi in 2012 which has now become a one-stop clothing solution for the women of Pakistan . Thus we became to be known as Bonanza | Satrangi.
-                <br><br>
-                The umbrella brand is now clearly divided into two: Bonanza – Men’s Formal Clothing, Knits, and Ethnic Wear; and Satrangi – Women’s Prêt, Unstitched, and Accessories.
-            </p>
-   </div> 
+    <h3 class="mb-3"><i class="fas fa-bullseye text-danger me-2"></i>Our Mission</h3>
+    <p>We aim to empower students by creating a space where learning and teaching are part of daily collaboration — accessible, affordable, and fun.</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img src="img/img5.svg" class="img-fluid rounded shadow-sm mb-4" alt="Our Mission">
+      </div>
+    </div>
+    <h3 class="mt-5 mb-3"><i class="fas fa-lightbulb text-warning me-2"></i>What Makes Us Unique?</h3>
+    <ul class="list-unstyled fs-5">
+      <li><i class="fas fa-exchange-alt text-success me-2"></i>Skill Swapping, not Spending</li>
+      <li><i class="fas fa-network-wired text-info me-2"></i>Grow Your Peer Network</li>
+      <li><i class="fas fa-award text-purple me-2"></i>Build Reputation Through Sharing</li> <br>
+        <div class="row justify-content-center">
+      <div class="col-md-6">
+        <img src="img/img6.svg" class="img-fluid rounded shadow-sm mb-4" alt="Our Mission">
+      </div>
+    </div>
+    </ul>
+    <a href="signup_login.html" class="btn btn-custom btn-lg mt-4">Start Swapping Skills Today <i class="fas fa-arrow-right ms-1"></i></a>
 
-   <br><br>
+  </div>
+</section>
 
- <!-- Footer -->
- <footer>
-  <div class="container-fluid border border-dark" style="border: black;">
-    <br>
-<div class="row">
-<div class="col-4">
-  Phone:<a href="tel:+9221111244266" class="text-decoration-none"><span style="color: black;">    +92 21 111-244-266</span></a>
+<!-- Footer -->
+<footer class="text-center py-4 mt-5">
+  <p class="mb-0">&copy; 2025 Trade My Talent. All rights reserved.</p>
+</footer>
 
-<br><br>
-  Email:<a href="%20orders@bonanzagt.com" class="text-decoration-none"><span style="color: black;">     orders@bonanzagt.com</span></a>
-<br><br>
-  Customer Care: <br>
-  Monday to Saturday: 9am to 8pm
-  <br><br>
-  
-    <a href="https://web.facebook.com/bonanzagt/?_rdc=11&_rdr" class="text-decoration-none"><i class="fa-brands fa-facebook-f"></i>  <span style="color: black;">Facebook</span></a>
-<br>
-    <a href="https://www.instagram.com/bonanzaofficial/?hl=en" class="text-decoration-none"><i class="fa-brands fa-instagram"></i>  <span style="color: black;">Instagram</span></a>
-<br>
-<a href="https://www.youtube.com/channel/UCDblU9Vxyi7kXxX0uf-cvyg" class="text-decoration-none"><i class="fa-brands fa-youtube"></i>  <span style="color: black;">YouTube</span></a>
-  
-</div>
-<div class="col-4">
-  <h6 class="text-uppercase mb-4">
-  <b>INFORMATION</b>
-  </h6>
-  <p>
-    <a href="about.html" class="text-reset text-decoration-none">About Us</a>
-  </p>
-  <p>
-    <a href="track.html" class="text-reset text-decoration-none">Track Your Order</a>
-  </p>
-  <p>
-    <a href="shippping.html" class="text-reset text-decoration-none">Shipping Information</a>
-  </p>
-  <p>
-    <a href="store.html" class="text-reset text-decoration-none">Store Locator</a>
-  </p>
-  <p>
-    <a href="terms.html" class="text-reset text-decoration-none">Terms of Service</a>
-  </p>
-  <p>
-      <a href="refund.html" class="text-reset text-decoration-none">Refund policy</a>
-    </p>
-</div>
-<div class="col-4">
-  <h6 class="text-uppercase mb-4">
-    <b>CUSTOMER CARE</b>
-  </h6>
-  <p>
-    <a href="contact.html" class="text-reset text-decoration-none">Contact Us</a>
-  </p>
-  <p>
-    <a href="privacy.html" class="text-reset text-decoration-none">Privacy Policy</a>
-  </p>
-  <p>
-    <a href="return.html" class="text-reset text-decoration-none">Return and Exchange Policy</a>
-  </p>  
-  <p>
-    <a href="FAQs.html" class="text-reset text-decoration-none">FAQs</a>
-  </p>
-  <p>
-    PAYMENT MATHODS
-    <img src="img/Payment_Logos___Global.webp" alt="">
-    </p>
-    <p>
-      VERIFIED BY
-<img src="img/Verified_By_Logo_af8a428d-ee80-4986-a2c0-14307b4a64e2.webp" alt="">
-    </p>
-</div>
-</div>
-</div>
-
-<div>
-  <p style="margin-left: 30px; padding: 10px;">© 2024 Bonanza | All Rights Reserved | <span style="font-size: 13px; color: red;">Developed by Shopistan</span> | <span style="font-size: 13px; color: red;">Powered by XStak</span> <br>
-    Designed by AdornThemes</p>
-</div>
-<!-- Footer End -->
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    document.getElementById('themeIcon').classList.toggle('rotate');
+    const icon = document.getElementById('themeIcon');
+    if (document.body.classList.contains('dark-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    }
+  }
+</script>
+</body>
+</html>
