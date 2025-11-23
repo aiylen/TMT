@@ -1,482 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bonanza Satrangi</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trade My Talent</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #f6d365 0%, #fd6e6a 100%);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+    }
+    .glass-navbar {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      box-shadow: 0 2px 16px rgba(111,66,193,0.08);
+    }
+    .text-gradient {
+      background: linear-gradient(90deg, #6f42c1, #fd6e6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .theme-toggle-btn {
+      background: none;
+      border: none;
+      color: inherit;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+      outline: none;
+      z-index: 1050;
+      position: relative;
+    }
+    .theme-toggle-btn:active i,
+    .theme-toggle-btn:focus i {
+      outline: none;
+      box-shadow: none;
+    }
+    .rotate {
+      transform: rotate(180deg);
+      transition: transform 0.3s;
+    }
+    .btn-custom {
+      background: #6f42c1;
+      color: #fff;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+      border: none;
+    }
+    .btn-custom:hover {
+      background: #fd6e6a;
+      color: #fff;
+    }
+    .section.glass-card {
+      background: rgba(255,255,255,0.25);
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(111,66,193,0.08);
+      backdrop-filter: blur(8px);
+      margin-bottom: 40px;
+      transition: box-shadow 0.3s;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.18);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(111,66,193,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(111,66,193,0.18);
+    }
+    .dark-mode {
+      background: #181828 !important;
+      color: #f0f0f0 !important;
+    }
+    .dark-mode .glass-navbar,
+    .dark-mode .section.glass-card,
+    .dark-mode .feature-card {
+      background: rgba(30,30,30,0.85) !important;
+      color: #f0f0f0 !important;
+    }
+    /* Dark mode for navbar links and buttons */
+    .dark-mode .navbar,
+    .dark-mode .glass-navbar {
+      background: rgba(30,30,30,0.85) !important;
+    }
+    .dark-mode .nav-link,
+    .dark-mode .navbar-brand {
+      color: #f0f0f0 !important;
+    }
+    .dark-mode .nav-link.active,
+    .dark-mode .nav-link:focus,
+    .dark-mode .nav-link:hover {
+      color: #ffd700 !important;
+    }
+    .dark-mode .btn-custom,
+    .dark-mode .btn-outline-primary {
+      background: #23234a !important;
+      color: #ffd700 !important;
+      border-color: #ffd700 !important;
+    }
+    .dark-mode .btn-custom:hover,
+    .dark-mode .btn-outline-primary:hover {
+      background: #ffd700 !important;
+      color: #23234a !important;
+      border-color: #ffd700 !important;
+    }
+    /* Section animation */
+    .section-animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(.68,-0.55,.27,1.55), transform 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+    }
+    .section-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 991px) {
+      .glass-navbar {
+        border-radius: 0;
+      }
+      .glass-card {
+        border-radius: 0;
+        margin-bottom: 24px;
+        padding: 24px 8px;
+      }
+    }
+    .theme-toggle-btn img.theme-toggle-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+}
 
+.splash-overlay {
+  position: fixed;
+  z-index: 3000;
+  inset: 0;
+  background: linear-gradient(120deg, #f6d365 0%, #fd6e6a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1s cubic-bezier(.68,-0.55,.27,1.55);
+  opacity: 1;
+  pointer-events: all;
+}
+.splash-overlay.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+.splash-content {
+  text-align: center;
+  animation: popIn 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.splash-title {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: linear-gradient(90deg, #6f42c1, #fd6e6a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 8px 32px rgba(111,66,193,0.18);
+  animation: textPop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes popIn {
+  0% { transform: scale(0.7) rotate(-8deg); opacity: 0; }
+  60% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+@keyframes textPop {
+  0% { letter-spacing: 0.5em; opacity: 0; }
+  60% { letter-spacing: 0.15em; opacity: 1; }
+  100% { letter-spacing: 0.1em; opacity: 1; }
+}
+
+  </style>
 </head>
 <body>
-  <!-- banner -->
-    <div class="container-fluid" style="background-color:#fcdcdc ;">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-4"><i class="fa-solid fa-paper-plane" style="font-size: 13px;"></i>    Flat Rs. 100 shipping charges on all orders</div>
-            <div class="col-2">             </div>
-            <div class="col-4">No Return or Exchange on Sale Items</div>
-            <div class="col-1"></div>
-        </div>
-    </div>
-    <!-- banner end -->
-    <!-- navbar -->
-    
-    <div class="container">
-      <div class="row">
-      <div class="col-4"></div>
-        <div class="col-1 "> <a href="home.html"><img src="./img/Bonanza_Logo_500x@2x.webp"  class="rounded mx-auto d-block"  width="300px"  alt=""></a></div>
-        <div class="col-4"></div> 
-        <div class="col-1"></div> 
-        <div class="col-2 mt-3 p-2">
-          <a href="track.html"><i class="fa-solid fa-truck p-1"></i></a>
-          <a href=""><i class="fa-solid fa-magnifying-glass p-1"></a></i>
-          <a href=""><i class="fa-regular fa-heart p-1"></a></i>
-          <a href=""><i class="fa-solid fa-bag-shopping p-1"></a></i>
-          <a href=""><i class="fa-solid fa-user p-1"></a></i>
-          </div>   
-        
-    </div> 
+  <!-- Splash/Intro Animation -->
+<div id="splash" class="splash-overlay">
+  <div class="splash-content">
+    <h1 id="splashTitle" class="splash-title">TRADE MY TALENT</h1>
   </div>
-  
-    <!-- navbar -->
-    <div class="nav-bar">
-        <div class="container-fluid border-bottom border-dark">
-          <div class="row">
-            <div class="col-2"></div>
-            <div class="col-10">
-              <a class="navbar-brand text-success" href="">NEW ARRVIALS</a>
-              <a class="navbar-brand " href="#">WINTER COLLECTION</a>
-              <a class="navbar-brand" href="#">READY TO WEAR</a>
-              <a class="navbar-brand" href="#">COSMETICS</a>
-              <a class="navbar-brand" href="#">MEN</a>
-              <a class="navbar-brand" href="#">FRAGRANCES</a>
-              <a class="navbar-brand text-danger" href="#">SALE</a>
-            </div>
-        <div class=""></div>
-        
-        </div>
-        </div>
-    </div>
-    <!-- navbar end -->
-    <!-- carousel -->
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="10000">
-            <img src="./img/im1.webp" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item" data-bs-interval="2000">
-            <img src="./img/im6.webp" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="./img/im3.webp" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="./img/im4.webp" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="./img/im5.webp" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="./img/im7.webp" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-      <br>
-      <!-- video -->
-      <div class="ratio ratio-16x9">
-        <iframe
-          src="img/9e29a32954c94d9bbdd5c869d8788ae2.mp4"
-          title=""
-          allowfullscreen
-        ></iframe>
-      </div>
-      <br>
-      <!-- button -->
-      <div class="d-grid gap-2 col-2 mx-auto " style="background-color: #fcdcdc; border: 2px solid black;">
-        <button class="btn" type="button">EXPLORE MORE</button>
-      </div>
-      <br> 
-      <script>
-        $(document).ready(function(){
-          $(".btn-0").click(function(){
-            alert("Subscribed Successfully");
-          });
-        });  
-            
-        </script>
-    <!-- Cards -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-3 col-6">
-          <div class="hover">
-            <img src="img/card 1.webp" class="card-img-top" alt="...">
-          </div>
-<br>
-        <div class="col">
-          <div class="hover">
-            <img src="img/card 2.webp" class="card-img-top" alt="...">
+</div>
+<audio id="splashSound" src="https://cdn.pixabay.com/audio/2022/07/26/audio_124bfae5b7.mp3" preload="auto"></audio>
 
-          </div>
-        </div>  
-      </div>
-        <div class="col-md-6 col-6">
-          <div class="hover">
-            <img src="img/card.3.webp" class="card-img-top" alt="...">
-          </div>
-        </div>        
-        <div class="col-md-3 col-6">
-          <div class="hover">
-            <img src="img/card 4.webp" class="card-img-top" alt="...">
-          </div>
-<br>
-        <div class="col">
-          <div class="hover">
-            <img src="img/card 5.webp" class="card-img-top" alt="...">
-
-          </div>
-        </div>  
-        </div>
-      </div>
-    </div>
-    <!-- cards end -->
-  <br>
-  <!-- TOP PICKS -->
-  <div class="container">
-    <h3 class="text-center">TOP PICKS</h3>
-    <nav>
-      <ul class="pagination justify-content-center">
-        <li class="page-item"><a class="page-link text-dark" href="#">NEW ARRIVALS</a></li>
-        <li class="page-item"><a class="page-link text-dark" href="#">UNSTITCHED</a></li> 
-        <li class="page-item"><a class="page-link text-dark" href="#">READY TO WEAR</a></li>
+<!-- Modern Glass Navbar -->
+<nav class="navbar navbar-expand-lg glass-navbar sticky-top shadow-sm px-4 py-2">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-gradient" href="#">
+      <span id="navbarLogo" class="navbar-logo-anim">Trade My Talent</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span><i class="fas fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="btn btn-outline-primary ms-2" href="signup_login.html">Login</a></li>
+        <li class="nav-item"><a class="btn btn-custom ms-2" href="signup_login.html">Sign Up</a></li>
+          <button onclick="toggleTheme()" class="theme-toggle-btn ms-3">
+            <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" class="theme-toggle-icon" id="themeIcon" alt="Toggle Theme" />
+          </button>
+        </li>
       </ul>
-    </nav>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-      <div class="col-3">
-        <div class="">
-          <img src="img/img 1.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text text-center">MIDNIGHT MUSE - 3 PC (1W24P3P309) <br> PKR. 4280  </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="">
-          <img src="img/img 2.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text text-center">ROYAL VIBES - 3 PC (1W24P3P293) <br> PKR. 4280  </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="">
-          <img src="img/img 3.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text text-center">GLISTEN - 3 PC <br>(1W24P3P295) <br> PKR. 4280  </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-3">
-        <div class="">
-          <img src="img/img 4.webp" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text text-center">CHIC REVERIE - 3 PC (1W24P3P238) <br> PKR. 4280  </p>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
-  <br>
-  <!-- hr card -->
-  <div class="container">
-  <div class=" mb-3" style="max-width: 1400px; background-color: #fcdcdc; justify-content: center;">
-    <div class="row g-0">
-      <div class="col-md-6">
-        <img src="img/hr img.webp" class="img-fluid rounded-start" alt="...">
-      </div>
-      <div class="col-md-6">
-        <div class="card-body m-5 p-5 text-center">
-          <h4 class="card-title">BEAUTY & FRAGRANCES</h4>
-          <p class="card-text">Create your charm to leave a lasting impression by counting on our captivating and breathtaking fragrances and irresistible beauty products. Explore the world of our fragrances and beauty range available now!</p>
-          <!-- btn -->
-          <div class="d-grid gap-4 col-5 mx-auto " style="background-color: #fcdcdc; border: 2px solid black;">
-            <button class="btn " type="button"><b>SHOP NOW</b></button>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-  <!-- newsletter -->
-  <div class="" style="background-color: #fcdcdc;">
-    <br><br>
-    <div class="row">
-      <div class="col-1"></div>
-      <div style="display: flex;" class="col-1">
-        <a style="font-size:40px;" href=""><i class="fa-solid fa-truck"></i></a>   
-      
-      </div>
-      <div class="col-4">
-        <h5>SHIPPING <br> Flat Rs. 100 shipping charges on all orders</h5>
-      </div>
-      <div class="col-1">
-        |<br>
-        |<br>
-        |<br>
-        |<br>
-      </div>
-      <div class="col-1">
-        <a style="font-size:40px;" href=""><i class="fa-solid fa-phone"></i></a>
-      </div>
-      <div class="col-4">
+</nav>
 
-        <h5>ONLINE SUPPORT <br> UAN: 021 111-244-266
-      </div>     
-    </div> 
-      <br>
-      <h3 style="text-align: center;">NEWSLETTER</h3>
-      <p style="text-align: center;">Sign up to stay in the loop. Receive updates, access to exclusive deals, and more.</p>
-        <footer class="bg-body-tertiary text-center text-lg-start">
-          <!-- Grid container -->
-          <div class="container">
-            <form action="">
-              <!--Grid row-->
-              <div class="row">
-                <!--Grid column-->
-                <div class="col-10 mb-3 mb-md-0">
-                  <!-- Email input -->
-                  <div data-mdb-input-init class="form-outline mb-4">
-                    <input type="email" id="form5Example22" class="form-control" placeholder="Email address"/>
-                  </div>
-                </div>
-                <!--Grid column-->
-                <div class="col-auto mb-6 mb-md-0">
-                  <!-- Submit button -->
-                  <button style=" padding: 5px; background-color: black; color: white; border: 1px; border-radius: 4px;" class="btn-0">SUBSCRIBE</button>
-                  
-                
-                
-                </div>
-                <!--Grid column-->
-              </div>
-              <!--Grid row-->
-            </form>
-          </div>
-          <!-- Grid container -->
-        </footer>
- 
+  <!-- Hero Section -->
+  <section class="hero-section text-center d-flex align-items-center justify-content-center section-animate " style="min-height: 60vh;">
+    <div>
+      <h1 class="display-4 fw-bold mb-3 text-gradient">Learn, Teach & Grow Together</h1>
+      <p class="lead mb-4">Exchange your skills with others. No money, just pure learning.</p>
+      <a href="features.html" class="btn btn-custom btn-lg me-2">Explore Features</a>
     </div>
-  </div>
-  <br>
-    <!-- Top Picks For You -->
+  </section>
+
+  <!-- Features Section -->
+  <section class="section glass-card text-center py-5 section-animate" data-aos="fade-up" data-aos-delay="100">
     <div class="container">
-      <h4 class="text-center">Top Picks For You</h4>
-      <div class="row row-cols-1 row-cols-md-2 g-3">
-        <div class="col-1"></div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tp-1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">PINK-CAMBRIC-3 PIECE (BPS5243P34)
-                <del>PKR 10,850</del> <br>
-                <span class="text-danger">PKR 8,680</span>  </p>
-            </div>
+      <h2 class="mb-4"><i class="fas fa-star me-2 text-warning"></i>Platform Features</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="feature-card p-4">
+            <i class="fas fa-handshake fa-2x text-success mb-2"></i>
+            <h5>Connect Across Disciplines</h5>
+            <p>Meet students from different fields and swap skills.</p>
           </div>
         </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tp-2.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">RLILAC-JACQUARD-3 PIECE (CD1S5243P6) <br>
-                <span class="text-danger"> PKR 8,480</span></p>
-            </div>
+        <div class="col-md-4">
+          <div class="feature-card p-4">
+            <i class="fas fa-bolt fa-2x text-danger mb-2"></i>
+            <h5>Earn Skill Points</h5>
+            <p>Build your reputation and unlock new opportunities.</p>
           </div>
         </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tp-3.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">S-GREEN-CAMBRIC-3 PIECE (BPS5243P01) <br>
-              <del> PKR 8,880</del> <br>
-              <span class="text-danger">PKR 7,104</span>  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tp-4.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">PINK-JACQUARD-2 PIECE (SS6242P35)
-              <del>PKR 7,580</del> <br>
-              <span class="text-danger">PKR 6,064</span>  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tp-5.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">BLACK-LAWN-3 PIECE (BS2243P26)
-              <del>PKR 8,880</del> <br> 
-              <span class="text-danger">PKR 4,440</span>   </p>
-            </div>
+        <div class="col-md-4">
+          <div class="feature-card p-4">
+            <i class="fas fa-book-open fa-2x text-info mb-2"></i>
+            <h5>Mutual Growth</h5>
+            <p>No money involved – just pure learning and sharing.</p>
           </div>
         </div>
       </div>
     </div>
-    <br>
-    <!-- Top Trending Products -->
+  </section>
+
+  <!-- About Section -->
+  <section class="section glass-card text-center py-5 section-animate" data-aos="fade-up">
     <div class="container">
-      <h4 class="text-center">Top Trending Product</h4>
-      <div class="row row-cols-1 row-cols-md-2 g-3">
-        <div class="col-1"></div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tt-1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">BEIGE-CAMBRIC-3 PIECE (BPS5243P04)
-              <del>PKR 9,880</del> <br>
-              <span class="text-danger">PKR 7,904</span>  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tt-2.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">PINK-CAMBRIC-2 PIECE (BS1242P03)
-                <del>PKR 11,580</del> <br>
-                <span class="text-danger">PKR 7,904</span>   </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tt-3.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">LIME CRUSH - 2 PC (RSR232P22)
-                <del>PKR 3,780</del> <br>
-                <span class="text-danger"> PKR 1,890</span>  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tt-4.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">GREEN-SILK-3 PIECE (BS5243P06)
-                <del>PKR 16,580</del> <br>
-                <span class="text-danger">  PKR 13,264</span>  </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-2">
-          <div class="">
-            <img src="img/tt-5.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text text-center">PINK-CAMBRIC-3 PIECE (BPS5243P34)
-                <del>PKR 10,850</del> <br>
-                <span class="text-danger">PKR 8,680</span> </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 class="mb-4"><i class="fas fa-users me-2 text-primary"></i>About Trade My Talent</h2>
+      <p class="mb-4">Trade My Talent is a student skill-swap platform that lets you exchange knowledge with peers. No fees, just pure growth.</p>
+      <img src="img/img1.svg" class="img-fluid rounded shadow-sm" alt="About image" style="max-width: 400px;">
     </div>
-    <br><br><br>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section glass-card text-center py-5 section-animate" data-aos="fade-up">
+    <div class="container">
+      <h2 class="mb-4"><i class="fas fa-envelope me-2 text-secondary"></i>Contact Us</h2>
+      <p class="mb-4">Have questions or want to join the beta? Reach out to us!</p>
+      <img src="img/img3.svg" class="img-fluid rounded shadow-sm" alt="Contact image" style="max-width: 400px;">
+    </div>
+  </section>
+  <!-- Call to Action Section -->
+  <section class="section glass-card text-center py-5 section-animate" data-aos="fade-up">
+    <div class="container">
+      <h2 class="mb-4"><i class="fas fa-lightbulb me-2 text-warning"></i>Ready to Start Learning?</h2>
+      <p class="mb-4">Join our community and start trading your skills today!</p>
+      <a href="signup_login.html" class="btn btn-custom btn-lg">Get Started Now</a>
+    </div>
+  </section>
   <!-- Footer -->
-  <footer>
-  <div class="container-fluid border border-dark" style="border: black;">
-    <br>
-<div class="row">
-<div class="col-4">
-  Phone:<a href="tel:+9221111244266" class="text-decoration-none"><span style="color: black;">    +92 21 111-244-266</span></a>
+  <footer class="text-center py-4 mt-5">
+    <p class="mb-0">&copy; 2025 Trade My Talent. All rights reserved.</p>
+  </footer>
 
-<br><br>
-  Email:<a href="%20orders@bonanzagt.com" class="text-decoration-none"><span style="color: black;">     orders@bonanzagt.com</span></a>
-<br><br>
-  Customer Care: <br>
-  Monday to Saturday: 9am to 8pm
-  <br><br>
-  
-    <a href="https://web.facebook.com/bonanzagt/?_rdc=11&_rdr" class="text-decoration-none"><i class="fa-brands fa-facebook-f"></i>  <span style="color: black;">Facebook</span></a>
-<br>
-    <a href="https://www.instagram.com/bonanzaofficial/?hl=en" class="text-decoration-none"><i class="fa-brands fa-instagram"></i>  <span style="color: black;">Instagram</span></a>
-<br>
-<a href="https://www.youtube.com/channel/UCDblU9Vxyi7kXxX0uf-cvyg" class="text-decoration-none"><i class="fa-brands fa-youtube"></i>  <span style="color: black;">YouTube</span></a>
-  
-</div>
-<div class="col-4">
-  <h6 class="text-uppercase mb-4">
-  <b>INFORMATION</b>
-  </h6>
-  <p>
-    <a href="about.html" class="text-reset text-decoration-none">About Us</a>
-  </p>
-  <p>
-    <a href="track.html" class="text-reset text-decoration-none">Track Your Order</a>
-  </p>
-  <p>
-    <a href="shippping.html" class="text-reset text-decoration-none">Shipping Information</a>
-  </p>
-  <p>
-    <a href="store.html" class="text-reset text-decoration-none">Store Locator</a>
-  </p>
-  <p>
-    <a href="terms.html" class="text-reset text-decoration-none">Terms of Service</a>
-  </p>
-  <p>
-      <a href="refund.html" class="text-reset text-decoration-none">Refund policy</a>
-    </p>
-</div>
-<div class="col-4">
-  <h6 class="text-uppercase mb-4">
-    <b>CUSTOMER CARE</b>
-  </h6>
-  <p>
-    <a href="contact.html" class="text-reset text-decoration-none">Contact Us</a>
-  </p>
-  <p>
-    <a href="privacy.html" class="text-reset text-decoration-none">Privacy Policy</a>
-  </p>
-  <p>
-    <a href="return.html" class="text-reset text-decoration-none">Return and Exchange Policy</a>
-  </p>  
-  <p>
-    <a href="FAQs.html" class="text-reset text-decoration-none">FAQs</a>
-  </p>
-  <p>
-    PAYMENT MATHODS
-    <img src="img/Payment_Logos___Global.webp" alt="">
-    </p>
-    <p>
-      VERIFIED BY
-<img src="img/Verified_By_Logo_af8a428d-ee80-4986-a2c0-14307b4a64e2.webp" alt="">
-    </p>
-</div>
-</div>
-</div>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      document.getElementById('themeIcon').classList.toggle('rotate');
+      const icon = document.getElementById('themeIcon');
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    }
+    // Section animation on scroll
+    document.addEventListener("DOMContentLoaded", function() {
+      const sections = document.querySelectorAll('.section-animate');
+      function revealSections() {
+        sections.forEach(section => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 60) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', revealSections);
+      revealSections();
+    });
 
-<div>
-  <p style="margin-left: 30px; padding: 10px;">© 2024 Bonanza | All Rights Reserved | <span style="font-size: 13px; color: red;">Developed by Shopistan</span> | <span style="font-size: 13px; color: red;">Powered by XStak</span> <br>
-    Designed by AdornThemes</p>
-</div>
-<!-- Footer End -->
+      // Splash animation
+  window.addEventListener('DOMContentLoaded', function() {
+    // Play splash sound
+    var splashAudio = document.getElementById('splashSound');
+    if (splashAudio) splashAudio.play().catch(() => {});
+    // Play on first user interaction if blocked
+    function playOnInteract() {
+      splashAudio.play();
+      window.removeEventListener('click', playOnInteract);
+      window.removeEventListener('keydown', playOnInteract);
+    }
+    window.addEventListener('click', playOnInteract);
+    window.addEventListener('keydown', playOnInteract);
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<!-- JQ -->
-  
+    setTimeout(function() {
+      document.getElementById('splash').classList.add('hide');
+    }, 1500); // 1.8 seconds, adjust as you like
+  });
+  </script>
 </body>
 </html>
