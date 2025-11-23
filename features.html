@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Trade My Talent</title>
+  <title>Features - Trade My Talent</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -58,7 +58,7 @@
       background: #fd6e6a;
       color: #fff;
     }
-    .glass-card, .contact-section form {
+    .glass-card {
       background: rgba(255,255,255,0.25);
       border-radius: 18px;
       box-shadow: 0 4px 24px rgba(111,66,193,0.08);
@@ -66,48 +66,30 @@
       margin-bottom: 40px;
       transition: box-shadow 0.3s;
     }
-    .contact-section form {
-      border: none;
-      margin-bottom: 0;
-    }
-    .contact-section label {
-      font-weight: 600;
-      color: #6f42c1;
-    }
-    .contact-section .form-control {
+    .feature-card {
       background: rgba(255,255,255,0.18);
-      border: none;
-      border-radius: 8px;
-      color: #23234a;
-      font-size: 1rem;
-      margin-bottom: 12px;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(111,66,193,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 2rem 1.2rem;
+      min-height: 270px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
-    .contact-section .form-control:focus {
-      box-shadow: 0 0 0 2px #6f42c1;
-      background: rgba(255,255,255,0.35);
-      color: #23234a;
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(111,66,193,0.18);
     }
-    .contact-section .btn-custom {
-      font-size: 1.1rem;
-      padding: 12px 0;
-      margin-top: 10px;
-    }
-    .contact-section .lead {
-      color: #23234a;
-    }
-    .contact-section .fa {
-      vertical-align: middle;
-    }
-    .contact-section .bg-light {
-      background: rgba(255,255,255,0.6) !important;
-    }
+    .text-purple { color: #6f42c1; }
     .dark-mode {
       background: #181828 !important;
       color: #f0f0f0 !important;
     }
     .dark-mode .glass-navbar,
     .dark-mode .glass-card,
-    .dark-mode .contact-section form {
+    .dark-mode .feature-card {
       background: rgba(30,30,30,0.85) !important;
       color: #f0f0f0 !important;
     }
@@ -136,16 +118,6 @@
       color: #23234a !important;
       border-color: #ffd700 !important;
     }
-    @media (max-width: 991px) {
-      .glass-navbar {
-        border-radius: 0;
-      }
-      .glass-card, .contact-section form {
-        border-radius: 0;
-        margin-bottom: 24px;
-        padding: 24px 8px;
-      }
-    }
     /* Section animation */
     .section-animate {
       opacity: 0;
@@ -155,6 +127,20 @@
     .section-animate.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+    @media (max-width: 991px) {
+      .glass-navbar {
+        border-radius: 0;
+      }
+      .glass-card {
+        border-radius: 0;
+        margin-bottom: 24px;
+        padding: 24px 8px;
+      }
+      .feature-card {
+        min-height: 220px;
+        padding: 1.2rem 0.5rem;
+      }
     }
     .theme-toggle-btn img.theme-toggle-icon {
       width: 28px;
@@ -178,8 +164,8 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
         <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         <li class="nav-item"><a class="btn btn-outline-primary ms-3" href="signup_login.html">Login</a></li>
         <li class="nav-item"><a class="btn btn-custom ms-2" href="signup_login.html">Sign Up</a></li>
           <button onclick="toggleTheme()" class="theme-toggle-btn ms-3">
@@ -187,45 +173,79 @@
           </button>
         </li>
       </ul>
-      
     </div>
   </div>
 </nav>
 
-<!-- Contact Section -->
-<section class="contact-section py-5 section-animate" data-aos="fade-up">
+<!-- Features Section -->
+<section class="text-center py-5" data-aos="fade-up">
   <div class="container">
-    <h1 class="text-center mb-4"><i class="fas fa-envelope text-primary me-2"></i>Contact Us</h1>
-    <p class="text-center mb-5 lead">Have questions or want to collaborate? We’d love to hear from you.</p>
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <form class="p-4 p-md-5 rounded shadow-sm glass-card">
-          <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Your Name">
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Your Email">
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
-          </div>
-          <button type="submit" class="btn btn-custom btn-lg w-100">Send Message</button>
-        </form>
+    <h1 class="mb-4"><i class="fas fa-cogs text-primary me-2"></i>Platform Features</h1>
+    <p class="lead mb-5">Explore what makes Trade My Talent powerful and unique for student skill sharing.</p>
 
-        <div class="mt-5 text-center">
-          <p><i class="fas fa-phone-alt text-success me-2"></i>+92 300 1234567</p>
-          <p><i class="fas fa-envelope text-danger me-2"></i>support@trademytalent.com</p>
-          <p><i class="fas fa-map-marker-alt text-info me-2"></i>Karachi, Pakistan</p>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-handshake fa-2x text-success mb-3"></i>
+            <h5 class="card-title">Skill Exchange</h5>
+            <p class="card-text">Connect with students to teach and learn valuable skills — without money involved.</p>
+          </div>
         </div>
+      </div>
 
-        <div class="text-center mt-4">
-          <a href="index.html" class="btn btn-outline-primary btn-lg">Back to Home</a>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-clock fa-2x text-warning mb-3"></i>
+            <h5 class="card-title">Flexible Scheduling</h5>
+            <p class="card-text">Work with others at your own pace, whether you’re learning on weekends or late nights.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-star fa-2x text-purple mb-3"></i>
+            <h5 class="card-title">Build Reputation</h5>
+            <p class="card-text">Gain feedback, earn badges, and boost your credibility as a learner and teacher.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-comments fa-2x text-info mb-3"></i>
+            <h5 class="card-title">Community Chat</h5>
+            <p class="card-text">Interact with peers via in-app messaging and discussion forums (Coming Soon).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-user-friends fa-2x text-danger mb-3"></i>
+            <h5 class="card-title">Peer Network</h5>
+            <p class="card-text">Grow your circle by connecting with like-minded students globally.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="card h-100 shadow-sm border-0 feature-card">
+          <div class="card-body">
+            <i class="fas fa-mobile-alt fa-2x text-dark mb-3"></i>
+            <h5 class="card-title">Mobile Friendly</h5>
+            <p class="card-text">Access all features from any device — responsive design ensures a great experience.</p>
+          </div>
         </div>
       </div>
     </div>
+
+    <a href="signup_login.html" class="btn btn-custom btn-lg mt-5">Join the Movement <i class="fas fa-arrow-right ms-1"></i></a>
   </div>
 </section>
 
@@ -239,31 +259,9 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
-  // Section animation on scroll (for .section-animate)
-  document.addEventListener("DOMContentLoaded", function() {
-    const sections = document.querySelectorAll('.section-animate');
-    function revealSections() {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 60) {
-          section.classList.add('visible');
-        }
-      });
-    }
-    window.addEventListener('scroll', revealSections);
-    revealSections();
-  });
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     document.getElementById('themeIcon').classList.toggle('rotate');
-    const icon = document.getElementById('themeIcon');
-    if (document.body.classList.contains('dark-mode')) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    } else {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    }
   }
 </script>
 </body>
